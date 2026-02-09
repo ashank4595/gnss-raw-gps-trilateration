@@ -1,0 +1,38 @@
+# ==========================================================
+# gitignore rules for GNSSLogger 
+# (Android Studio app collecting GNSS data)
+# ==========================================================
+
+# macOS system files
+.DS_Store
+
+# Gradle / Build outputs (generated)
+**/build/
+**/.gradle/
+
+# Local machine configuration
+local.properties
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+
+# Android generated files
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+output-metadata.json
+
+# Logs / profiling
+*.log
+*.hprof
+
+# Signing keys (ignoring for security)
+*.jks
+*.keystore
+
+# Google / Firebase config, 
+# remove if maps api used later
+google-services.json

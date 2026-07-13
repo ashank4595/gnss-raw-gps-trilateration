@@ -12,19 +12,21 @@ def findRadii():
 
 
     n = int(input("enter number of satellites: "))
-    radii = [0] * n
+    radii = {}
 
     for i in range(int(n)):
         currSat = int(input("enter satellite SVID/PRN number: "))
         recvsvTimeNanos = int(input("enter recvsvTimeNanos for SVID " + str(currSat) + " : ")) 
         deltaT = Tmod - recvsvTimeNanos
-        radii[i] = 299_792_458 * deltaT
+        radii[currSat] = 299_792_458 * deltaT #speed of light (m/s) * time difference (s)
     return radii
 
 def findSatelliteCoordinates():
     return 
 
 radii = findRadii()
+print(radii)
+
 satCoordinates = findSatelliteCoordinates()
 
 

@@ -1,10 +1,10 @@
-# GPS from Scratch: Raw GNSS Trilateration on Android
+# Raw GNSS Trilateration
 
-An Android app that pulls **raw satellite signals** off the phone's GNSS chip and computes its own position from first principles — no Fused Location Provider, no A-GPS, no OS positioning of any kind. Satellite bitstreams in, latitude/longitude out.
+An Android app that pulls **raw satellite signals** off the phone's GNSS chip and computes its own position from first principles, no OS positioning of any kind.
 
 Recovers position to within **~500 m** of truth.
 
-The phone is used as a _sensor_, not a positioning service. It gives us two things: when each signal from multiple GPS satellites arrived and when it was sent. Everything else, is derived.
+The phone is used as a _sensor_ via its GNSS receiver, not a positioning service. It gives us two things: when each satellite signal arrived, and when it was sent. Everything else is derived.
 
 ---
 
@@ -158,7 +158,7 @@ compute/
 3. Grant `ACCESS_FINE_LOCATION` and run **outdoors**; the navigation message needs a clean signal, and subframes 1–3 take up to 30 s to all arrive.
 4. Output streams to the on-screen log and Logcat under tag `GNSS_APP`. Feed it to `python compute/calculations.py`.
 
-## Gotchas
+## Notes
 
 - **`STATE_CODE_LOCK` matters.** Before code lock, `receivedSvTimeNanos` isn't a real transmit time and the pseudorange is nonsense. Measurements are filtered on it.
 - **`fullBiasNanos` is huge and negative** — not a bug. It's the offset from the GPS epoch, and subtracting it is what maps phone time onto GPS time.
